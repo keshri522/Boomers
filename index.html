@@ -13,7 +13,7 @@
       </div>
       <div class="right-container">
         <button type="button" class="btn1">SIGN IN</button>
-        <form id="form"">
+        <form id="form">
           <div class="row">
             <h1 class="h1first">Explore & Exprerience</h1>
 
@@ -30,7 +30,10 @@
                   name="name"
                   placeholder="First name"
                 />
+                <div class="error"></div>
+                <!-- just for showing error -->
               </div>
+
               <div class="second">
                 <input
                   type="text"
@@ -38,12 +41,15 @@
                   name="last_name"
                   placeholder="Last name"
                 />
+                <div class="error"></div>
+                <!-- just for showing error -->
               </div>
             </div>
           </div>
 
           <div class="row">
             <input type="text" id="email" name="email" placeholder="Email" />
+            <div class="error"></div>
           </div>
 
           <div class="row">
@@ -53,6 +59,8 @@
               name="username"
               placeholder="Username"
             />
+            <div class="error"></div>
+            <!-- just for showing error -->
           </div>
 
           <div class="row">
@@ -62,6 +70,8 @@
               name="password"
               placeholder="Password"
             />
+            <div class="error"></div>
+            <!-- just for showing error -->
           </div>
 
           <div class="row">
@@ -71,6 +81,8 @@
               name="cpassword"
               placeholder="Confirm Password"
             />
+            <div class="error"></div>
+            <!-- just for showing error -->
           </div>
 
           <div class="row">
