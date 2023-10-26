@@ -19,11 +19,9 @@
   height: 100%;
   object-fit: contain;
 }
-
 .right-container {
   padding: 3rem;
 }
-
 .row {
   margin-bottom: 10px;
 }
@@ -32,7 +30,6 @@
   display: flex;
   justify-content: space-between;
 }
-
 .btn1 {
   padding-left: 2rem;
   padding-right: 2rem;
@@ -42,20 +39,17 @@
   background-color: transparent;
   float: right;
 }
-
 .row h1 {
   color: rgb(81, 81, 241);
   font-weight: bolder;
   line-height: 0.6;
 }
-
 p {
   color: rgb(81, 81, 241);
   font-weight: bold;
   line-height: 0.6;
   opacity: 0.9;
 }
-
 input {
   width: 100%;
   padding: 1.1rem;
@@ -81,21 +75,16 @@ form {
   margin-top: 8rem;
 }
 
-/* Responsive styles */
+/* making the form responsive using media query */
 @media screen and (max-width: 1120px) {
   .outer-container {
     flex-direction: column;
   }
-
-
-
-
   .first,
   .second {
     flex: 1;
     width: 100%;
   }
-
   .row h1,
   .row p {
     font-size: 1.4rem;
@@ -106,9 +95,21 @@ form {
     float: none;
   }
 }
+/* // for hovering effect in input */
+input:hover{
+  outline: none;
+  background-color: aliceblue;
+  border:none;
+}
+/* adding error validation based on the error this classed is added to the input fields */
+.input_success{
+  border: 1px solid forestgreen;
+}
+.input_error{
+  border:1px solid red;
+}
 
 @media screen and (max-width: 668px) {
-
   .btn1,
   .btn2 {
     width: 100%;
@@ -134,11 +135,9 @@ form {
     flex: 1;
     width: 100%;
   }
-
   .row h1,
   .row p {
     font-size: 1em;
     line-height: normal;
   }
-
 }
