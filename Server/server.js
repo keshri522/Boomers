@@ -9,19 +9,19 @@ const dotenv = require("dotenv").config();
 app.use(express.json());
 app.use(cors());
 // routes
-// app.get("/", (req, res) => {
-//   let data = "SELECT * FROM user";
-//   DatabConnection.query(data, (error, results, field) => {
-//     if (error) {
-//       console.log(error);
-//       res.status(400).send(error);
-//       return;
-//     } else {
-//       console.log(results);
-//       res.status(200).json(results);
-//     }
-//   });
-// });
+app.get("/", (req, res) => {
+  let data = "SELECT * FROM user";
+  DatabConnection.query(data, (error, results, field) => {
+    if (error) {
+      console.log(error);
+      res.status(400).send(error);
+      return;
+    } else {
+      console.log(results);
+      res.status(200).json(results);
+    }
+  });
+});
 // creating a post routes to  post the  data into sql database
 app.post("/userdata", (req, res) => {
   const data = req.body;
