@@ -47,6 +47,8 @@ This project contains a client-side application (built with HTML, CSS, and Vanil
 - cors
 
 
+## Disclaimer
+- Backer Server is on render so it will take some time to response
 
 
 
