@@ -74,12 +74,7 @@ input {
 form {
   margin-top: 8rem;
 }
-/* // for hovering effect in input */
-input:hover{
-  outline: none;
-  background-color: aliceblue;
-  border:none;
-}
+
 /* adding error validation based on the error this classed is added to the input fields */
 .input_success{
   border-color: rgb(6, 243, 6);
