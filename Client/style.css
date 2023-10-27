@@ -150,4 +150,9 @@ form {
     font-size: 1em;
     line-height: normal;
   }
+    .error {
+      color: red;
+      font-size: 10px;
+      height: 10px;
+    }
 }
