@@ -1,10 +1,12 @@
 // creating connection with my sql database
 const mysql = require("mysql");
+const dotenv = require("dotenv").config();
 const con = mysql.createConnection({
-  host: "localhost",
-  user: "root",
-  password: "",
-  database: "user",
+  // to provide more robust or security using  enivorment files
+  host: process.env.HOST,
+  user: process.env.USER,
+  password: process.env.PASSWORD,
+  database: process.env.DATABASE,
 });
 // creating connection
 con.connect((err) => {

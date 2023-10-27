@@ -4,12 +4,13 @@ const app = express();
 const mysql = require("mysql");
 const DatabConnection = require("./DataBaseConnection"); // this is the connection with sql
 const cors = require("cors");
+const dotenv = require("dotenv").config();
 // middleWare to parese the data  coming from body
 app.use(express.json());
 app.use(cors());
 // routes
 // app.get("/", (req, res) => {
-//   let data = "SELECT * FROM formdata";
+//   let data = "SELECT * FROM user";
 //   DatabConnection.query(data, (error, results, field) => {
 //     if (error) {
 //       console.log(error);
@@ -25,7 +26,7 @@ app.use(cors());
 app.post("/userdata", (req, res) => {
   const data = req.body;
   //   console.log(data);
-  DatabConnection.query("INSERT INTO formdata Set ?", data, (error, result) => {
+  DatabConnection.query("INSERT INTO user Set ?", data, (error, result) => {
     if (error) {
       //   console.log(error);
       res.status(500).send(error);
