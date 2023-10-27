@@ -1,28 +1,64 @@
 let form = document.querySelector("#form");
 // declaring globally that can be access entire application
-let Fname, Lname, username, email, password, cpassword;
+let FirstName, LastName, UserName, Email, Password, CPassword;
 
 // adding events
 const handleSubmit = (e) => {
   e.preventDefault();
-  Fname = document.querySelector("#name").value;
-  Lname = document.querySelector("#last_name").value;
-  username = document.querySelector("#username").value;
-  email = document.querySelector("#email").value;
-  password = document.querySelector("#password").value;
-  cpassword = document.querySelector("#cpassword").value;
+  FirstName = document.querySelector("#name").value;
+  LastName = document.querySelector("#last_name").value;
+  UserName = document.querySelector("#username").value;
+  Email = document.querySelector("#email").value;
+  Password = document.querySelector("#password").value;
+  CPassword = document.querySelector("#cpassword").value;
   const NewData = {
-    Fname,
-    Lname,
-    username,
-    email,
-    password,
-    cpassword,
+    FirstName,
+    LastName,
+    UserName,
+    Email,
+    Password,
+    CPassword,
   };
   // for making our submit button work only if there are no error message
   const ErrorMessage = ValidateInputs();
   if (ErrorMessage.length === 0) {
+    const JsonData = JSON.stringify(NewData);
     // then only we call a api here
+    fetch("http://localhost:4000/userdata", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JsonData,
+    })
+      .then((res) => {
+        if (res.status === 200) {
+          return res.json();
+        } else {
+          throw new Error(`HTTP error! status: ${res.status}`);
+        }
+      })
+      .then((data) => {
+        alert(
+          JSON.stringify({
+            res: data.result,
+            data: data.data,
+          })
+        );
+        // remove all the input fields
+        // target the form first
+        const formData = document.querySelector("#form");
+        formData.reset();
+        // need to remove the success classlist on all inputs
+        const inputs = document.querySelectorAll("input");
+        inputs.forEach((ele) => {
+          ele.classList.remove("input_success");
+        });
+      })
+      .catch((error) => {
+        alert(error);
+        console.log(error);
+      });
   }
 };
 // this is just for email matching patterns using regex
@@ -47,30 +83,30 @@ const SetSuccess = (element) => {
 };
 // validating the forms first remove the white spaces
 const ValidateInputs = () => {
-  const FirstName = Fname.trim();
-  const LastName = Lname.trim();
-  const Username = username.trim();
-  const Email = email.trim();
-  const Password = password.trim();
-  const Cpassword = cpassword.trim();
+  const firstname = FirstName.trim();
+  const lastname = LastName.trim();
+  const username = UserName.trim();
+  const email = Email.trim();
+  const password = Password.trim();
+  const cpassword = CPassword.trim();
 
   // for thee error message
   const ErrorMessage = [];
-  if (FirstName === "") {
+  if (firstname === "") {
     Seterror(document.querySelector("#name"), "First Name is required!");
     ErrorMessage.push("First Name is required!");
   } else {
     SetSuccess(document.querySelector("#name"));
   }
 
-  if (LastName === "") {
+  if (lastname === "") {
     Seterror(document.querySelector("#last_name"), "Last Name is required!");
     ErrorMessage.push("Last Name is required!");
   } else {
     SetSuccess(document.querySelector("#last_name"));
   }
 
-  if (Username === "") {
+  if (username === "") {
     Seterror(document.querySelector("#username"), "Username is required!");
     ErrorMessage.push("UserName is required!");
   } else {
@@ -84,16 +120,16 @@ const ValidateInputs = () => {
     SetSuccess(document.querySelector("#email"));
   }
 
-  if (Password === "") {
+  if (password === "") {
     Seterror(document.querySelector("#password"), "Password is required!");
     ErrorMessage.push("Password is required!");
-  } else if (Password.length < 2) {
+  } else if (password.length < 2) {
     Seterror(
       document.querySelector("#password"),
       "Password must be at least two characters!"
     );
     ErrorMessage.push("Password is required!");
-  } else if (Password.length > 10) {
+  } else if (password.length > 10) {
     Seterror(
       document.querySelector("#password"),
       "Password must be less than ten characters!"
@@ -103,13 +139,13 @@ const ValidateInputs = () => {
     SetSuccess(document.querySelector("#password"));
   }
 
-  if (Cpassword === "") {
+  if (cpassword === "") {
     Seterror(
       document.querySelector("#cpassword"),
       "Confirm password is required!"
     );
     ErrorMessage.push("Cpassword is required!");
-  } else if (Cpassword !== Password) {
+  } else if (cpassword !== password) {
     Seterror(document.querySelector("#cpassword"), "Password does not match!");
     ErrorMessage.push("Cpassword is required!");
   } else {
