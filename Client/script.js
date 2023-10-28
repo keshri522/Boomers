@@ -1,6 +1,15 @@
 let form = document.querySelector("#form");
 // declaring globally that can be access entire application
 let FirstName, LastName, UserName, Email, Password, CPassword;
+// for the first button click
+document.addEventListener("DOMContentLoaded", () => {
+  // first our content loads then it will run through
+  const SignInbutton = document.querySelector("#firstButton");
+  SignInbutton.addEventListener("click", (e) => {
+    e.preventDefault();
+    window.location.reload(); // it will reload the page
+  });
+});
 
 // adding events
 const handleSubmit = (e) => {

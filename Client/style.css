@@ -33,10 +33,12 @@
 .btn1 {
   padding-left: 2rem;
   padding-right: 2rem;
+  padding-top: 4px;
+  padding-bottom: 4px;
   white-space: 0;
   color: rgb(81, 81, 241);
   border: 2px solid rgb(81, 81, 241);
-  background-color: transparent;
+  /* background-color: transparent; */
   float: right;
 }
 .row h1 {
@@ -87,7 +89,10 @@ form {
   font-size: 1rem;
   height: 1rem;
 }
-
+.btn1:hover{
+background-color: blue;
+color: whitesmoke;
+}
 /* making the form responsive using media query */
 @media screen and (max-width: 1120px) {
   .outer-container {
