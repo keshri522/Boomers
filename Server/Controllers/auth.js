@@ -23,12 +23,12 @@ const getAllData = async (req, res) => {
 // this post api to post all the data like user details to databse mysql
 const postAllData = async (req, res) => {
   const data = req.body;
-  console.log(data); // just for debugging
+  //   console.log(data); // just for debugging
 
   try {
     DatabConnection.query("INSERT INTO user SET ?", data, (error, result) => {
       if (error) {
-        console.error(error); // Log the error for debugging
+        // console.error(error); // Log the error for debugging
         res.status(500).send(error);
         return;
       } else {
@@ -39,7 +39,7 @@ const postAllData = async (req, res) => {
       }
     });
   } catch (error) {
-    console.error(error); // Log the error for debugging
+    // console.error(error); // Log the error for debugging
     res.status(400).send(error);
   }
 };
